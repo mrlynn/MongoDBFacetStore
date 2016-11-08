@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1 MongoDB Hackathon Store
+  p.lead A demonstration of faceted search.
+  hr
+  .row
+    .col-sm-3
+      form(method='POST' action='/search')
+        p
+          label(for="q") Search:
+            input.form-control.input-lg(type="text", name="q", value=q)
+            .tip.
+              Enter a search string
+              such as <em>televisions</em>.
+        p.buttons
+          input(type="submit", value="Search")
+      h4 Categories
+      each category in categories
+        li.list-unstyled
+          a(href='/category/' + category) #{category}
+    .col-sm-9
+      each product in products
+        h2 #{product.title}
+        img.img-thumbnail(src=product.imagePath )
+        p #{product.description}
+        h4 #{product.category} - #{product.productType}
+        each attr in product.attributes
+          h5 #{attr.name} #{attr.value}
+        hr

@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1 MongoDB Hackathon Store
+  p.lead A demonstration of faceted search.
+  hr
+  .row
+    .col-sm-3
+      h4 Categories
+      each cat in categories
+        li.list-unstyled(class=(cat == category) ? 'active' : undefined)
+          a(href='/category/' + cat) #{cat}
+      h4 Product Types
+      each type in productTypes
+        li.list-unstyled(class=(type == productType) ? 'active' : undefined)
+          a(href='/product-type/' + type) #{type}
+    .col-sm-9
+      each product in products
+        h2 #{product.title}
+        img.img-thumbnail(src=product.imagePath )
+        p #{product.description}
+        h4 #{product.category} - #{product.productType}
+        each attr in product.attributes
+          h5 #{attr.name} #{attr.value}
+        hr
