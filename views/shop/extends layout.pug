@@ -7,8 +7,6 @@ block content
   .row
     .col-sm-3
       form(method='POST' action='/search')
-        input(type='hidden', name='_csrf', value=_csrf)
-
         p
           label(for="q") Search:
             input.form-control.input-lg(type="text", name="q", value=q)
@@ -22,12 +20,11 @@ block content
         li.list-unstyled
           a(href='/category/' + category) #{category}
     .col-sm-9
-      if products
-        each product in products
-          h2 #{product.title}
-          img.img-thumbnail(src=product.imagePath )
-          p #{product.description}
-          h4 #{product.category} - #{product.productType}
-          each attr in product.Attributes
-            h5 #{attr.Name} #{attr.Value}
-          hr
+      each product in products
+        h2 #{product.title}
+        img.img-thumbnail(src=product.imagePath )
+        p #{product.description}
+        h4 #{product.category} - #{product.productType}
+        each attr in product.attributes
+          h5 #{attr.name} #{attr.value}
+        hr

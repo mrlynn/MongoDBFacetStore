@@ -34,14 +34,14 @@ for (var i=0; i < 100; i++) {
 	imageFunction = eval('faker.image.' + category.toLowerCase() + '()');
 
 	product = new Product({
-		code: code,
+		code: 'gen' + code,
 		name: name,
 		title: faker.commerce.productAdjective() + ' ' + color + ' ' + name,
 		description: faker.lorem.sentence(),
 		taxable: 'Yes',
 		shipable: 'Yes',
 		price: faker.commerce.price(),
-		productType: materialBrand,
+		Product_Group: materialBrand,
 		category: category,
 		attributes: [{
 			name: 'color',

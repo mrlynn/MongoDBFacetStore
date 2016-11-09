@@ -1,5 +1,4 @@
 var Product = require('../models/Product');
-var Category = require('../models/Category');
 var mongoose = require('mongoose');
 var faker = require('faker');
 var dotenv = require('dotenv');
@@ -14,8 +13,7 @@ mongoose.connection.on('error', () => {
   process.exit();
 });
 products = [];
-categories = ['Business','Sports','Cats','City','Abstract','Animals','Food','Nightlife','Technics'];
-brands = ['Nikon','Sony','Canon','GoPro','Samsung','Pentax','Panasonic','Kodak','Hasselblad','FujiFilm'];
+brands = ['Nikon','Sony','Canon','GoPro','Samsung','Pentax','Lumix','Kodak','Hasselblad','FujiFilm'];
 videoresolutions = ['1080p','1080l','720p','1440p','4k','8k'];
 imageresolutions = ['42 Megapixels','29 Megapixels','20 Megapixels','18 Megapixels','12 Megapixels','8 Megapixels'];
 opticalzoom = ['18mm','20mm','23mm','24mm'];
@@ -25,52 +23,55 @@ for (var i=0; i < 100; i++) {
 	var code = 1000 + i;
 	var color = faker.commerce.color();
 	var materialBrand = faker.commerce.productMaterial();
-	memTypeNum = Math.floor((Math.random() * memorycardtype.length-1) + 1); 
-	typeNum = Math.floor((Math.random() * 8) + 1); 
-	brandNum = Math.floor((Math.random() * brands.length-1) + 1); 
-	resNum = Math.floor((Math.random() * imageresolutions.length-1) + 1); 
-	vresNum = Math.floor((Math.random() * videoresolutions.length-1) + 1); 
-	ozNum = Math.floor((Math.random() * opticalzoom.length-1) + 1); 
+	memTypeNum = Math.floor((Math.random() * memorycardtype.length-1) + 1);
+	typeNum = Math.floor((Math.random() * 8) + 1);
+	brandNum = Math.floor((Math.random() * brands.length-1) + 1);
+	resNum = Math.floor((Math.random() * imageresolutions.length-1) + 1);
+	vresNum = Math.floor((Math.random() * videoresolutions.length-1) + 1);
+	ozNum = Math.floor((Math.random() * opticalzoom.length-1) + 1);
 	oz = opticalzoom[ozNum];
 	memCard = memorycardtype[memTypeNum];
 	resolution = imageresolutions[resNum];
 	vresolution = videoresolutions[vresNum];
 	brand = brands[brandNum];
-	console.log(typeNum);
+	imagePath = '/img/' + brand.toLowerCase() + '-camera.jpg'
 	var category = 'Camera';
 	name = faker.commerce.productName() + ' Camera';
+	price = faker.commerce.price();
 	product = new Product({
-		code: code,
+		code: 'cam' + code,
 		name: name,
-		title: faker.commerce.productAdjective() + ' ' + color + ' ' + name,
+		title: brand + ' ' + faker.commerce.productAdjective() + ' ' + color + ' ' + name,
 		description: faker.lorem.sentence(),
 		taxable: 'Yes',
 		shipable: 'Yes',
-		price: faker.commerce.price(),
-		productType: materialBrand,
-		category: category,
-		attributes: [{
-			name: 'color',
-			value: color
+		price: price,
+		'Product_Group': 'Camera',
+		category: 'Camera',
+		Attributes: [{
+			Name: 'color',
+			Value: color
 		},{
-			name: 'brand',
-			value: brand
+			Name: 'brand',
+			Value: brand
 		},{
-			name: "Memory Card Type",
-			value: memCard
+			Name: "Memory Card Type",
+			Value: memCard
 		},{
-			name: 'Image Resolution',
-			value: resolution
+			Name: 'Image Resolution',
+			Value: resolution
 		},{
-			name: 'Video Resolution',
-			value: vresolution
+			Name: 'Video Resolution',
+			Value: vresolution
 		},{
-			name: 'Optical Zoom',
-			value: oz
+			Name: 'Optical Zoom',
+			Value: oz
+		},{
+			Name: 'Price',
+			Value: price
 		}],
-		imagePath: faker.image.technics()
+		imagePath: imagePath
 	});
-	
 
 	product.save(function(err) {
 		if (err) {
@@ -84,5 +85,5 @@ for (var i=0; i < 100; i++) {
 }
 
 function exit() {
-	mongoose.disconnect() 
+	mongoose.disconnect();
 }

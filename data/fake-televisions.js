@@ -16,7 +16,7 @@ mongoose.connection.on('error', () => {
 // Category.remove({},function(err,results) {});
 products = [];
 categories = ['Business','Sports','Cats','City','Technics'];
-brands = ['Sony','LG','Generic','PROSCAN','Apple','Dell','Flimsy','Freds','Viascan'];
+brands = ['Sony','LG','Generic','PROSCAN','Apple','Dell','Flimsy','Freds','Throwback'];
 resolutions = ['1080p','1080l','720p','1440p','4k','8k'];
 var done = 0;
 for (var i=0; i < 100; i++) {
@@ -29,8 +29,12 @@ for (var i=0; i < 100; i++) {
 	resNum = Math.floor((Math.random() * resolutions.length-1) + 1);
 	resolution = resolutions[resNum];
 	brand = brands[brandNum];
+	imagePath = '/img/' + brand.toLowerCase() + '-television.jpg'
 	var productcategory = categories[typeNum];
-	name = faker.commerce.productName();
+	name = brand + ' ' + faker.commerce.productName();
+	name = name.toUpperCase();
+	price = faker.commerce.price(),
+
 	product = new Product({
 		code: code,
 		name: name,
@@ -38,26 +42,29 @@ for (var i=0; i < 100; i++) {
 		description: faker.lorem.sentence(),
 		taxable: 'Yes',
 		shipable: 'Yes',
-		price: faker.commerce.price(),
-		productType: materialBrand,
+		price: price,
+		'Product_Group': 'Television',
 		category: 'Television',
-		attributes: [{
-			name: 'color',
-			value: color
+		Attributes: [{
+			Name: 'color',
+			Value: color
 		},{
-			name: 'brand',
-			value: brand
+			Name: 'brand',
+			Value: brand
 		},{
-			name: "Screen Size",
+			Name: "Screen Size",
 			value: faker.random.number(26,75)
 		},{
-			name: 'Resolution',
+			Name: 'Resolution',
 			value: resolution
 		},{
-			name: 'Number of Ports',
-			value: faker.random.number(0,6)
+			Name: 'Number of Ports',
+			Value: faker.random.number(0,6)
+		},{
+			Name: 'Price',
+			Value: price
 		}],
-		imagePath: faker.image.technics()
+		imagePath: imagePath
 	});
 	product.save(function(err) {
 		if (err) {

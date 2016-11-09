@@ -25,7 +25,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	}),
 	new Product({
         "name": "Sony Liquid Toaster",
@@ -41,7 +41,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	}),
 	new Product({
         "name": "Sony Liquid Toaster",
@@ -57,7 +57,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	}),
 	new Product({
         "name": "Sony Liquid Toaster",
@@ -73,7 +73,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	}),
 	new Product({
         "name": "Sony Liquid Toaster",
@@ -89,7 +89,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	}),
 	new Product({
         "name": "Sony Liquid Toaster",
@@ -105,7 +105,7 @@ var products = [
 		},{
 			name: 'weight',
 			value: '25.5lbs'
-		}]    
+		}]
 	})
 ]
 var done = 0;
@@ -119,5 +119,5 @@ for (var i = 0; i < products.length; i++) {
 }
 
 function exit() {
-	mongoose.disconnect() 
+	mongoose.disconnect();
 }

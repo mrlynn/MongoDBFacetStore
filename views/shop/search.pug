@@ -6,20 +6,33 @@ block content
   hr
   .row
     .col-sm-3
+      form(method='POST' action='/textSearch')
+        p
+          input(type='hidden', name='_csrf', value=_csrf)
+          label(for="q") Search:
+            input.form-control.input-lg(type="text", name="q", value=q)
+            .tip.
+              Enter a search string
+              such as <em>televisions</em>.
+        p.buttons
+          input(type="submit", value="Search")
       h4 Categories
-      each cat in categories
-        li.list-unstyled(class=(cat == category) ? 'active' : undefined)
-          a(href='/category/' + cat) #{cat}
+      if categories
+        each cat in categories
+          li.list-unstyled(class=(cat._id == category) ? 'active' : undefined)
+            a(href='/category/' + cat._id + '?q=' + q) #{cat._id} (#{cat.count})
       h4 Product Types
-      each type in productTypes
-        li.list-unstyled(class=(type == productType) ? 'active' : undefined)
-          a(href='/product-type/' + type) #{type}
+      if productTypes
+        each type in productTypes
+          li.list-unstyled(class=(type == productType) ? 'active' : undefined)
+            a(href='/product-type/' + type) #{type}
     .col-sm-9
-      each product in products
-        h2 #{product.title}
-        img.img-thumbnail(src=product.imagePath )
-        p #{product.description}
-        h4 #{product.category} - #{product.productType}
-        each attr in product.attributes
-          h5 #{attr.name} #{attr.value}
-        hr
+      if products
+        each product in products
+          h2 #{product.title}
+          img.img-thumbnail(src=product.imagePath )
+          p #{product.description}
+          h4 #{product.category} - #{product.productType}
+          each attr in product.Attributes
+            h5 #{attr.Name} #{attr.Value}
+          hr

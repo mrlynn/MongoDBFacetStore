@@ -140,6 +140,7 @@ app.get('/search', searchController.index);
 app.get('/category/:category', searchController.categoryIndex);
 app.get('/product-type/:productType', searchController.productTypeSearch);
 app.post('/search', searchController.search);
+app.post('/textSearch', searchController.textSearch);
 
 /**
  * API examples routes.

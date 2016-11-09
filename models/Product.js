@@ -8,7 +8,7 @@ var schema = new Schema({
 		required: false
 	},
 	imagePath: {
-		type: String, 
+		type: String,
 		required: false
 	},
 	name: {
@@ -27,26 +27,16 @@ var schema = new Schema({
         type: Number,
         required: true
 	},
-	productType: {
+	'Product_Group': {
 		type: String,
 		required: false
 	},
-	attributes: [{
-		name: {
+	Attributes: [{
+		Name: {
 			type: String,
 			required: false
 		},
-		value: {
-			type: String,
-			required: false
-		}
-	}],
-	options: [{
-		name: {
-			type: String,
-			required: false
-		},
-		value: {
+		Value: {
 			type: String,
 			required: false
 		}
