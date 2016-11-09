@@ -1,0 +1,89 @@
+db.products.aggregate([{
+    $match: {
+        "Product_Group": "Television"
+    }
+}, {
+    $unwind: "$Attributes"
+}, {
+    $facet: {
+        "Screen Sizes": [{
+            $match: {
+                "Attributes.Name": "Screen Size"
+            }
+        }, {
+            $bucketAuto: {
+                groupBy: "$Attributes.Value",
+                buckets: 4
+            }
+        }],
+        "Price Ranges": [{
+            $match: {
+                "Attributes.Name": "Price"
+            }
+        }, {
+            $bucket: {
+                groupBy: "$Attribute.Value",
+                boundaries: [0, 200, 300, 500, Infinity]
+            }
+        }]
+    }
+}])
+
+$bucketAuto
+
+db.products.aggregate([{
+    $match: {
+        "Product_Group": "Television"
+    }
+}, {
+    $unwind: "$Attributes"
+}, {
+    $facet: {
+        "Screen Sizes": [{
+            $match: {
+                "Attributes.Name": "Screen Size"
+            }
+        }, {
+            $bucketAuto: {
+                groupBy: "$Attributes.Value",
+                buckets: 4
+            }
+        }]
+    }
+}])
+
+db.products.aggregate([{
+    $match: {
+        "Product_Group": "Television"
+    }
+}, {
+    $unwind: "$Attributes"
+}, {
+    $facet: {
+        "Price Ranges": [{
+            $match: {
+                "Attributes.Name": "Price"
+            }
+        }, {
+            $bucket: {
+                groupBy: "$Attribute.Value",
+                boundaries: [0, 200, 300, 500, Infinity]
+            }
+        }]
+    }
+}])
+
+{
+  $bucketAuto: {
+  groupBy: <arbitrary expression>,
+  buckets: <number which is representable as 32-bit integer>,
+  output: {  // Optional, defaults to {count: {$sum: 1}}
+         fieldName1: <accumulator 1>,
+        fieldName2: <accumulator 2>
+  },
+  granularity: <optional string - granularity spec>
+  }
+}
+
+
+

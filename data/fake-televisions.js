@@ -28,6 +28,8 @@ for (var i=0; i < 100; i++) {
 	brandNum = Math.floor((Math.random() * brands.length-1) + 1);
 	resNum = Math.floor((Math.random() * resolutions.length-1) + 1);
 	resolution = resolutions[resNum];
+
+	console.log(resolution);
 	brand = brands[brandNum];
 	imagePath = '/img/' + brand.toLowerCase() + '-television.jpg'
 	var productcategory = categories[typeNum];
@@ -53,13 +55,13 @@ for (var i=0; i < 100; i++) {
 			Value: brand
 		},{
 			Name: "Screen Size",
-			value: faker.random.number(26,75)
+			Value: Math.floor((Math.random() * 75-1) + 1)
 		},{
 			Name: 'Resolution',
-			value: resolution
+			Value: resolution
 		},{
 			Name: 'Number of Ports',
-			Value: faker.random.number(0,6)
+			Value: Math.floor((Math.random() * 5-1) + 1)
 		},{
 			Name: 'Price',
 			Value: price
