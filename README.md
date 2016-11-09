@@ -56,10 +56,11 @@ At this point you should have everything you need in order to run the FacetStore
 
 ```node app.js```
 
-
 ```npm install --savedev nodemon; npm run dev```
 
-You will then have a running application.  You can then open a browser and go to the url: ```http://localhost:3000```
+You will then have a running application.  You can then open a browser and go to the url: 
+
+```http://localhost:3000```
 
 Contributing
 ------------
