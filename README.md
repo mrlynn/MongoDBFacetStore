@@ -1,34 +1,7 @@
-MongoDB Facet Training
+MongoDB FacetStore
 =======================
 
-
-Table of Contents
------------------
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [Obtaining API Keys](#obtaining-api-keys)
-- [Project Structure](#project-structure)
-- [List of Packages](#list-of-packages)
-- [Useful Tools and Resources](#useful-tools-and-resources)
-- [Recommended Design Resources](#recommended-design-resources)
-- [Recommended Node.js Libraries](#recommended-nodejs-libraries)
-- [Recommended Client-side Libraries](#recommended-client-side-libraries)
-- [Pro Tips](#pro-tips)
-- [FAQ](#faq)
-- [How It Works](#how-it-works-mini-guides)
-- [Cheatsheets](#cheatsheets)
-    - [ES6](#-es6-cheatsheet)
-    - [JavaScript Date](#-javascript-date-cheatsheet)
-    - [Mongoose Cheatsheet](#mongoose-cheatsheet)
-- [Deployment](#deployment)
-- [Changelog](#changelog)
-- [Contributing](#contributing)
-- [License](#license)
-
-Features
---------
+MongoDBFacetStore is a ficticious ecommerce solution designed solely for the purpose of demonstrating MongoDB's aggregation framework - specifically the facet features associated with the framework.
 
 
 
