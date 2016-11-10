@@ -141,6 +141,10 @@ app.get('/category/:category', searchController.categoryIndex);
 app.get('/product-type/:productType', searchController.productTypeSearch);
 app.post('/search', searchController.search);
 app.post('/textSearch', searchController.textSearch);
+app.get('/team-a', homeController.teama);
+app.get('/team-b', homeController.teamb);
+app.get('/team-c', homeController.teamc);
+app.get('/team-d', homeController.teamd);
 
 /**
  * API examples routes.
