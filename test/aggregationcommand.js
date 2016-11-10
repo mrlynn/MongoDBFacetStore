@@ -13,3 +13,8 @@ db.products.aggregate([
       	buckets: 4
     	}}
 ])
+
+
+db.products.find({
+	
+})

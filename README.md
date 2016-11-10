@@ -62,6 +62,30 @@ You will then have a running application.  You can then open a browser and go to
 
 `http://localhost:3000`
 
+Changing the MongoDB Port or Database
+=====================================
+The app looks for a file in the root directory named .env.example.  This file contains a number of settings to make the app connect to various services.  The top two configurations are related to the MongoDB instance you wish to use.
+
+```
+MONGODB_URI=mongodb://localhost:27017/hackathon
+MONGOLAB_URI=mongodb://localhost:27017/hackathon
+
+SESSION_SECRET=Your Session Secret goes here
+
+MAILGUN_USER=postmaster@sandbox697fcddc09814c6b83718b9fd5d4e5dc.mailgun.org
+MAILGUN_PASSWORD=29eldds1uri6
+
+SENDGRID_USER=hslogin
+SENDGRID_PASSWORD=hspassword00
+
+NYT_KEY=9548be6f3a64163d23e1539f067fcabd:5:68537648
+
+LASTFM_KEY=c8c0ea1c4a6b199b3429722512fbd17f
+LASTFM_SECRET=is cb7857b8fba83f819ea46ca13681fe71
+```
+
+Notice the first two lines:  MONGODB_URI=mongodb://localhost:27017/hackathon
+
 
 License
 -------
