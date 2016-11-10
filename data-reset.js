@@ -1,24 +1,19 @@
 var Product = require('../models/product');
 var User = require('../models/user');
+var Order = require('../models/order');
 var Category = require('../models/category');
 var mongoose = require('mongoose');
-var dotenv = require('dotenv');
-const chalk = require('chalk');
-mongoose.Promise = global.Promise;
-
-
-dotenv.load({ path: '.env.example' });
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-mongoose.connection.on('error', () => {
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
-});
+var Config = require('../config/config');
+var connectionstring = 'mongodb://' + Config.dbhost + ':' + Config.dbport + '/' + Config.dbname;
+mongoose.connect(connectionstring);
+console.log("Removing data from " + Config.dbname + '/products');
 Product.remove({},function(err,results) {
 	if (err) {
 		console.log('error: ', err.message);
 		process.exit(-1);
 	}
 	console.log('Results: ' + JSON.stringify(results));
+	console.log("Removing data from " + Config.dbname + '/category');
 	Category.remove({}, function(err,results) {
 		if (err) {
 			console.log('error: ', err.message);
